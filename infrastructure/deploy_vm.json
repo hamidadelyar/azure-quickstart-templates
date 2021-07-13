@@ -106,6 +106,7 @@
     "osDiskType": "Standard_LRS",
     "subnetAddressPrefix": "10.1.0.0/24",
     "addressPrefix": "10.1.0.0/16",
+    "dataDiskName": "hamidsdisk",
     "linuxConfiguration": {
       "disablePasswordAuthentication": true,
       "ssh": {
