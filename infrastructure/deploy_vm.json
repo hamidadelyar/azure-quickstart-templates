@@ -234,7 +234,17 @@
             "offer": "UbuntuServer",
             "sku": "[parameters('ubuntuOSVersion')]",
             "version": "latest"
-          }
+          },
+          "dataDisks": [
+            {
+              "lun": 0,
+              "name": "[concat('dataacademy', take(uniqueString(resourceGroup().id), 6))]",
+              "createOption": "Attach",
+              "managedDisk": {
+                "id": "[resourceId('Microsoft.Compute/disks/', concat('dataacademy', take(uniqueString(resourceGroup().id), 6)))]"
+              }
+            }
+          ]
         },
         "networkProfile": {
           "networkInterfaces": [
@@ -266,19 +276,7 @@
         "creationData": {
           "createOption": "Empty"
         },
-        "diskSizeGB": "[parameters('diskSize')]",
-        "storagePofile": {
-          "dataDisks": [
-            {
-              "lun": 0,
-              "name": "[concat('dataacademy', take(uniqueString(resourceGroup().id), 6))]",
-              "createOption": "attach",
-              "managedDisk": {
-                "id": "[resourceId('Microsoft.Compute/disks/', concat('dataacademy', take(uniqueString(resourceGroup().id), 6)))]"
-              }
-            }
-          ]
-        }
+        "diskSizeGB": "[parameters('diskSize')]"
       }
     }
   ],
